@@ -1,0 +1,52 @@
+
+{
+  "name": "configuracion",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["clave", "valor", "createdAt"],
+        "properties": {
+          "clave": {
+            "bsonType": "string",
+            "description": "Nombre de la configuración"
+          },
+          "valor": {
+            "bsonType": "string",
+            "description": "Valor de la configuración en JSON"
+          },
+          "descripcion": {
+            "bsonType": "string",
+            "description": "Descripción de la configuración"
+          },
+          "categoria": {
+            "bsonType": "string",
+            "enum": ["respaldo", "contabilidad", "general", "seguridad"],
+            "description": "Categoría de configuración"
+          },
+          "activo": {
+            "bsonType": "bool",
+            "description": "Si la configuración está activa"
+          },
+          "creator": {
+            "bsonType": "string",
+            "description": "Creador de la configuración"
+          },
+          "createdAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Fecha de creación"
+          },
+          "updatedAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Fecha de actualización"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

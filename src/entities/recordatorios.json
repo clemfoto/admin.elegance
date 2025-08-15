@@ -1,0 +1,48 @@
+
+{
+  "name": "recordatorios",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["clienteId", "fecha", "tipo", "mensaje"],
+        "properties": {
+          "clienteId": {
+            "bsonType": "string",
+            "description": "ID del cliente asociado"
+          },
+          "fecha": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Fecha y hora del recordatorio"
+          },
+          "tipo": {
+            "bsonType": "string",
+            "enum": ["reunion_previa", "prueba_equipos", "sesion_compromiso", "seguimiento", "pago_pendiente", "entrega_material"],
+            "description": "Tipo de recordatorio"
+          },
+          "mensaje": {
+            "bsonType": "string",
+            "description": "Mensaje del recordatorio"
+          },
+          "completado": {
+            "bsonType": "bool",
+            "description": "Si el recordatorio fue atendido"
+          },
+          "notificado": {
+            "bsonType": "bool",
+            "description": "Si ya se envió la notificación"
+          },
+          "createdAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Fecha de creación"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

@@ -1,0 +1,183 @@
+
+{
+  "name": "clientes",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["nombres", "fechaBoda", "ciudad", "venue", "servicio", "formaPago", "estado"],
+        "properties": {
+          "nombres": {
+            "bsonType": "string",
+            "description": "Nombres completos del cliente"
+          },
+          "email": {
+            "bsonType": "string",
+            "description": "Email del cliente"
+          },
+          "telefono": {
+            "bsonType": "string",
+            "description": "Teléfono del cliente"
+          },
+          "fechaBoda": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Fecha y hora del evento"
+          },
+          "ciudad": {
+            "bsonType": "string",
+            "description": "Ciudad del evento"
+          },
+          "venue": {
+            "bsonType": "string",
+            "description": "Lugar del evento"
+          },
+          "servicio": {
+            "bsonType": "string",
+            "enum": ["fotografia", "video", "fotografia_video", "album", "paquete_completo"],
+            "description": "Tipo de servicio contratado"
+          },
+          "formaPago": {
+            "bsonType": "string",
+            "enum": ["efectivo", "transferencia", "tarjeta", "financiado", "mixto"],
+            "description": "Forma de pago principal"
+          },
+          "detallesPago": {
+            "bsonType": "object",
+            "properties": {
+              "cuotas": {
+                "bsonType": "array",
+                "items": {
+                  "bsonType": "object",
+                  "properties": {
+                    "monto": {
+                      "bsonType": "number",
+                      "minimum": 0
+                    },
+                    "fechaPago": {
+                      "bsonType": "string",
+                      "title": "datetime"
+                    },
+                    "metodoPago": {
+                      "bsonType": "string",
+                      "enum": ["efectivo", "transferencia", "tarjeta", "cheque"]
+                    },
+                    "estado": {
+                      "bsonType": "string",
+                      "enum": ["pendiente", "pagado", "vencido"]
+                    },
+                    "concepto": {
+                      "bsonType": "string"
+                    },
+                    "comprobante": {
+                      "bsonType": "string"
+                    }
+                  }
+                }
+              },
+              "descuentos": {
+                "bsonType": "number",
+                "minimum": 0
+              },
+              "impuestos": {
+                "bsonType": "number",
+                "minimum": 0
+              }
+            }
+          },
+          "montoTotal": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Monto total del servicio"
+          },
+          "montoAbonado": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Monto ya abonado"
+          },
+          "proximoPago": {
+            "bsonType": "object",
+            "properties": {
+              "monto": {
+                "bsonType": "number",
+                "minimum": 0
+              },
+              "fechaVencimiento": {
+                "bsonType": "string",
+                "title": "datetime"
+              },
+              "metodoPago": {
+                "bsonType": "string"
+              }
+            }
+          },
+          "estado": {
+            "bsonType": "string",
+            "enum": ["potencial", "confirmado", "en_proceso", "completado", "cancelado"],
+            "description": "Estado del cliente"
+          },
+          "solicitudesEspeciales": {
+            "bsonType": "string",
+            "description": "Solicitudes especiales del cliente"
+          },
+          "archivoExcel": {
+            "bsonType": "string",
+            "description": "URL del archivo Excel con solicitudes"
+          },
+          "notas": {
+            "bsonType": "string",
+            "description": "Notas internas"
+          },
+          "recordatorios": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "fecha": {
+                  "bsonType": "string",
+                  "title": "datetime"
+                },
+                "tipo": {
+                  "bsonType": "string"
+                },
+                "mensaje": {
+                  "bsonType": "string"
+                }
+              }
+            }
+          },
+          "alertasConfiguradas": {
+            "bsonType": "object",
+            "properties": {
+              "alertaSieteDias": {
+                "bsonType": "bool",
+                "description": "Alerta 7 días antes del evento"
+              },
+              "alertaPago": {
+                "bsonType": "bool",
+                "description": "Alertas de pagos pendientes"
+              },
+              "notificacionCelular": {
+                "bsonType": "bool",
+                "description": "Enviar notificaciones al celular"
+              }
+            }
+          },
+          "createdAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Fecha de creación"
+          },
+          "updatedAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Fecha de actualización"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

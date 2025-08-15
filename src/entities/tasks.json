@@ -1,0 +1,91 @@
+
+{
+  "name": "tasks",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["titulo", "asignadoA", "estado", "createdAt"],
+        "properties": {
+          "titulo": {
+            "bsonType": "string",
+            "description": "Título de la tarea"
+          },
+          "descripcion": {
+            "bsonType": "string",
+            "description": "Descripción detallada de la tarea"
+          },
+          "asignadoA": {
+            "bsonType": "string",
+            "enum": ["CLEM", "DIANA"],
+            "description": "Usuario asignado a la tarea"
+          },
+          "color": {
+            "bsonType": "string",
+            "enum": ["red", "blue", "green", "yellow", "purple", "pink", "indigo", "gray"],
+            "description": "Color de la tarea para organización visual"
+          },
+          "enfoque": {
+            "bsonType": "string",
+            "description": "Enfoque o metodología de la tarea"
+          },
+          "objetivos": {
+            "bsonType": "string",
+            "description": "Objetivos específicos de la tarea"
+          },
+          "tiempoEstimado": {
+            "bsonType": "int",
+            "minimum": 1,
+            "description": "Tiempo estimado en minutos"
+          },
+          "tiempoReal": {
+            "bsonType": "int",
+            "minimum": 0,
+            "description": "Tiempo real empleado en minutos"
+          },
+          "estado": {
+            "bsonType": "string",
+            "enum": ["pendiente", "en_progreso", "completada", "pausada"],
+            "description": "Estado actual de la tarea"
+          },
+          "prioridad": {
+            "bsonType": "string",
+            "enum": ["baja", "media", "alta", "urgente"],
+            "description": "Nivel de prioridad"
+          },
+          "fechaLimite": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Fecha límite para completar la tarea"
+          },
+          "clienteRelacionado": {
+            "bsonType": "string",
+            "description": "ID del cliente relacionado (opcional)"
+          },
+          "notas": {
+            "bsonType": "string",
+            "description": "Notas adicionales"
+          },
+          "createdAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Fecha de creación"
+          },
+          "updatedAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Fecha de última actualización"
+          },
+          "completedAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Fecha de finalización"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}

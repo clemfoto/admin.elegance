@@ -1,0 +1,67 @@
+
+{
+  "name": "gastos",
+  "options": {
+    "validator": {
+      "$jsonSchema": {
+        "bsonType": "object",
+        "required": ["concepto", "monto", "categoria", "fecha", "tipo", "createdAt"],
+        "properties": {
+          "concepto": {
+            "bsonType": "string",
+            "description": "Descripción del gasto o ingreso"
+          },
+          "monto": {
+            "bsonType": "number",
+            "minimum": 0,
+            "description": "Cantidad en pesos"
+          },
+          "categoria": {
+            "bsonType": "string",
+            "enum": ["servicios", "materiales", "transporte", "marketing", "personal", "otros", "ingresos"],
+            "description": "Categoría del movimiento"
+          },
+          "fecha": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Fecha del movimiento"
+          },
+          "tipo": {
+            "bsonType": "string",
+            "enum": ["ingreso", "gasto"],
+            "description": "Tipo de movimiento"
+          },
+          "recurrente": {
+            "bsonType": "bool",
+            "description": "Si es un gasto/ingreso recurrente mensual"
+          },
+          "mes": {
+            "bsonType": "string",
+            "description": "Mes en formato YYYY-MM"
+          },
+          "notas": {
+            "bsonType": "string",
+            "description": "Notas adicionales"
+          },
+          "creator": {
+            "bsonType": "string",
+            "description": "Creador del registro"
+          },
+          "createdAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Fecha de creación"
+          },
+          "updatedAt": {
+            "bsonType": "string",
+            "title": "datetime",
+            "description": "Fecha de actualización"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validationLevel": "moderate",
+    "validationAction": "warn"
+  }
+}
